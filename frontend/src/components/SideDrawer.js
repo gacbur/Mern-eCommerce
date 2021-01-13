@@ -11,7 +11,6 @@ const SideDrawer = ({ show, hide_menu }) => {
             <ul className="sidedrawer__links" onClick={hide_menu}>
                 <li>
                     <Link to="/cart">
-
                         <span className="sidedrawer__cart-sign">
                             <i><BiCartAlt /></i>
                             <p>Cart </p>

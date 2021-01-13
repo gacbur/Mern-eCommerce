@@ -8,13 +8,11 @@ import Cart from '../pages/Cart'
 const Main = () => {
     return (
         <div className="main">
-            <div className="main__content-cnt">
-                <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/product/:id" exact component={SingleProduct} />
-                    <Route path="/cart" exact component={Cart} />
-                </Switch>
-            </div>
+            <Switch>
+                <Route path="/" exact component={Home} />
+                <Route path="/product/:id" exact component={SingleProduct} />
+                <Route path="/cart" exact component={Cart} />
+            </Switch>
         </div>
     )
 }

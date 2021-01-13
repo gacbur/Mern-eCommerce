@@ -28,7 +28,7 @@ const Nav = ({ show_menu }) => {
                 className="navbar__hamburger"
                 onClick={show_menu}
             >
-                <GiHamburgerMenu />
+                <i><GiHamburgerMenu /></i>
             </button>
         </div >
     )
