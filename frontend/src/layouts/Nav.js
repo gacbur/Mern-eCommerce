@@ -2,8 +2,9 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 import { BiCartAlt } from 'react-icons/bi'
+import { GiHamburgerMenu } from 'react-icons/gi'
 
-const Nav = () => {
+const Nav = ({ show_menu }) => {
     return (
         <div className="navbar">
             <div className="navbar__logo">
@@ -11,19 +12,25 @@ const Nav = () => {
             </div>
             <ul className="navbar__links">
                 <li className="navbar__links-item">
-                    <NavLink exact className="navbar__links-item__link" activeClassName="navbar__logo-link--active" to="/">Home</NavLink>
+                    <NavLink exact activeClassName="navbar__logo-link--active" to="/">Home</NavLink>
                 </li>
                 <li className="navbar__links-item">
-                    <NavLink exact className="navbar__links-item__link" activeClassName="navbar__logo-link--active" to="/cart"><span className="navbar__links-item__link__cart-sign">Cart <BiCartAlt /></span> </NavLink>
+                    <NavLink exact activeClassName="navbar__logo-link--active" to="/cart"><span className="navbar__links-item__cart-sign">Cart <p><BiCartAlt /> 0 </p></span> </NavLink>
                 </li>
                 <li className="navbar__links-item">
-                    <NavLink exact className="navbar__links-item__link" activeClassName="navbar__logo-link--active" to="/login">Login</NavLink>
+                    <NavLink exact activeClassName="navbar__logo-link--active" to="/login">Login</NavLink>
                 </li>
                 <li className="navbar__links-item">
-                    <NavLink exact className="navbar__links-item__link" activeClassName="navbar__logo-link--active" to="/register">Register</NavLink>
+                    <NavLink exact activeClassName="navbar__logo-link--active" to="/register">Register</NavLink>
                 </li>
             </ul>
-        </div>
+            <button
+                className="navbar__hamburger"
+                onClick={show_menu}
+            >
+                <GiHamburgerMenu />
+            </button>
+        </div >
     )
 }
 
