@@ -2,6 +2,8 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 
+import './SideDrawer.css'
+
 import { BiCartAlt } from 'react-icons/bi'
 
 const SideDrawer = ({ show, hide_menu }) => {

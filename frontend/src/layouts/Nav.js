@@ -1,6 +1,8 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 
+import './Nav.css'
+
 import { BiCartAlt } from 'react-icons/bi'
 import { GiHamburgerMenu } from 'react-icons/gi'
 
