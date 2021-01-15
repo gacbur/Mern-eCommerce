@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { useSelector } from 'react-redux'
+
 import { Link } from 'react-router-dom'
 
 import './SideDrawer.css'
@@ -7,6 +9,14 @@ import './SideDrawer.css'
 import { BiCartAlt } from 'react-icons/bi'
 
 const SideDrawer = ({ show, hide_menu }) => {
+
+    const cart = useSelector(state => state.cart)
+
+    const { cartItems } = cart
+
+    const getCartItemsNumber = () => {
+        return cartItems.reduce((count, item) => count += Number(item.qty), 0)
+    }
 
     return (
         <div className={`sidedrawer ${show ? 'show' : ''}`}>
@@ -16,7 +26,7 @@ const SideDrawer = ({ show, hide_menu }) => {
                         <span className="sidedrawer__cart-sign">
                             <i><BiCartAlt /></i>
                             <p>Cart </p>
-                            <span>0</span>
+                            <span>{getCartItemsNumber()}</span>
                         </span>
                     </Link>
                 </li>

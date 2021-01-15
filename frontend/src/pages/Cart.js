@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -26,7 +26,7 @@ const Cart = () => {
     }
 
     const getTotalItemsNumber = () => {
-        return cartItems.reduce((count, item) => count + item.qty, 0)
+        return cartItems.reduce((count, item) => count + Number(item.qty), 0)
     }
 
     const getTotalSumNumber = () => {
