@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import './SingleProduct.css'
 
 import { getProductDetails as listProduct } from '../redux/actions/productActions'
+import { addToCart } from '../redux/actions/cartActions'
 
 import { BiCartAlt } from 'react-icons/bi'
 
@@ -23,6 +24,11 @@ const SingleProduct = ({ match, history }) => {
             dispatch(listProduct(match.params.id))
         }
     }, [dispatch, product, match])
+
+    const addToCartHandler = () => {
+        dispatch(addToCart(product._id, qty))
+    }
+
 
     return (
         <div className="single-product">
@@ -56,7 +62,12 @@ const SingleProduct = ({ match, history }) => {
                                         ))}
                                     </select>
                                 </label>
-                                <button type="button">Add to Cart <i><BiCartAlt />+</i></button>
+                                <button
+                                    type="button"
+                                    onClick={addToCartHandler}
+                                >
+                                    Add to Cart
+                                    <i><BiCartAlt />+</i></button>
                             </div>
 
                         </div>

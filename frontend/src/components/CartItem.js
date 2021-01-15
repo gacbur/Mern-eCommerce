@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { Link } from 'react-router-dom'
 
@@ -6,27 +6,35 @@ import { FaTrash } from 'react-icons/fa'
 
 import './CartItem.css'
 
-const CartItem = () => {
+const CartItem = ({ item, qtyChangeHandler, handleDeleteFromCart }) => {
+
+    const [cartItemQty, setCartItemQty] = useState(item.qty)
+
+    const handleChangeItemQty = (value) => {
+        setCartItemQty(value)
+        qtyChangeHandler(item.id, Number(value))
+    }
+
     return (
         <div className="cart-item">
             <div className="cart-item__image">
-                <img src='https://images.unsplash.com/photo-1606813907291-d86efa9b94db?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80' alt="" />
+                <img src={item.imageUrl} alt={item.name} />
             </div>
             <div className="cart-item__text">
-                <h4><Link to={`/product/${111}`} >ps5</Link></h4>
-                <h5>Price: $499.99</h5>
+                <h4><Link to={`/product/${item.id}`} >{item.name}</Link></h4>
+                <h5>Price: ${item.price}</h5>
                 <button
                     className="cart-item__btn"
+                    onClick={() => handleDeleteFromCart(item.id)}
                 >
                     <FaTrash /></button>
-                <select>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
+                <select value={cartItemQty} onChange={(e) => handleChangeItemQty(e.target.value)}>
+                    {[...Array(item.countInStock).keys()].map(x => (
+                        <option key={x + 1} value={x + 1}>{x + 1}</option>
+                    ))}
                 </select>
             </div>
-        </div>
+        </div >
     )
 }
 
